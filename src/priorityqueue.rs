@@ -1,4 +1,4 @@
-use std::Default;
+use std::default::Default;
 
 // Gotta make our own since libcollections doesn't yet!
 pub trait PriorityQueue <T> {
@@ -8,7 +8,7 @@ pub trait PriorityQueue <T> {
 }
 
 pub fn test_push <Q: PriorityQueue<uint> + Default + Collection> () {
-    let queue: Q = Default::default();
+    let mut queue: Q = Default::default();
     queue.push(1);
     assert_eq!(queue.len(), 1);
     queue.push(2);
@@ -16,7 +16,7 @@ pub fn test_push <Q: PriorityQueue<uint> + Default + Collection> () {
 }
 
 pub fn test_pop <Q: PriorityQueue<uint> + Default + Collection> () {
-    let queue: Q = Default::default();
+    let mut queue: Q = Default::default();
     queue.push(3); queue.push(2); queue.push(4);
     assert_eq!(queue.pop(), Some(2));
     assert_eq!(queue.len(), 2);
@@ -30,7 +30,7 @@ pub fn test_pop <Q: PriorityQueue<uint> + Default + Collection> () {
 }
 
 pub fn test_peek <Q: PriorityQueue<uint> + Default + Collection> () {
-    let queue: Q = Default::default();
+    let mut queue: Q = Default::default();
     assert_eq!(queue.peek(), None);
     queue.push(3); queue.push(2); queue.push(4);
     assert_eq!(queue.peek(), Some(&2));

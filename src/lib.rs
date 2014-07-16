@@ -4,3 +4,4 @@
 pub mod utils;
 pub mod collection;
 pub mod map;
+pub mod priorityqueue;
