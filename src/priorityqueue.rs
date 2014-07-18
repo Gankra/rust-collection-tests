@@ -120,88 +120,88 @@ macro_rules! bench_priorityqueue(
 
     #[bench]
     fn from_iter_ord_small (bencher: &mut Bencher) {
-        collection::bench_from_iter::<ToTest, _, _>(ordered_sequence::<uint>(2), bencher);
+        collection::bench_from_iter::<ToTest, _, _>(utils::ordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn from_iter_ord_big (bencher: &mut Bencher) {
-        collection::bench_from_iter::<ToTest, _, _>(ordered_sequence::<uint>(4), bencher);
+        collection::bench_from_iter::<ToTest, _, _>(utils::ordered_sequence::<uint>(4), bencher);
     }
 
     #[bench]
     fn from_iter_unord_small (bencher: &mut Bencher) {
-        collection::bench_from_iter::<ToTest, _, _>(unordered_sequence::<uint>(2), bencher);
+        collection::bench_from_iter::<ToTest, _, _>(utils::unordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn from_iter_unord_big (bencher: &mut Bencher) {
-        collection::bench_from_iter::<ToTest, _, _>(unordered_sequence::<uint>(4), bencher);
+        collection::bench_from_iter::<ToTest, _, _>(utils::unordered_sequence::<uint>(4), bencher);
     }
 
     
 
     #[bench]
     fn fill_and_pop_ord_small (bencher: &mut Bencher) {
-        super::bench_fill_and_pop::<ToTest, _, _>(ordered_sequence::<uint>(2), bencher);
+        priorityqueue::bench_fill_and_pop::<ToTest, _, _>(utils::ordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn fill_and_pop_ord_big (bencher: &mut Bencher) {
-        super::bench_fill_and_pop::<ToTest, _, _>(ordered_sequence::<uint>(4), bencher);
+        priorityqueue::bench_fill_and_pop::<ToTest, _, _>(utils::ordered_sequence::<uint>(4), bencher);
     }
 
     #[bench]
     fn fill_and_pop_unord_small (bencher: &mut Bencher) {
-        super::bench_fill_and_pop::<ToTest, _, _>(unordered_sequence::<uint>(2), bencher);
+        priorityqueue::bench_fill_and_pop::<ToTest, _, _>(utils::unordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn fill_and_pop_unord_big (bencher: &mut Bencher) {
-        super::bench_fill_and_pop::<ToTest, _, _>(unordered_sequence::<uint>(4), bencher);
+        priorityqueue::bench_fill_and_pop::<ToTest, _, _>(utils::unordered_sequence::<uint>(4), bencher);
     }
 
 
 
     #[bench]
     fn fill_and_drain_ord_small (bencher: &mut Bencher) {
-        super::bench_fill_and_drain::<ToTest, _, _>(ordered_sequence::<uint>(2), bencher);
+        priorityqueue::bench_fill_and_drain::<ToTest, _, _>(utils::ordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn fill_and_drain_ord_big (bencher: &mut Bencher) {
-        super::bench_fill_and_drain::<ToTest, _, _>(ordered_sequence::<uint>(4), bencher);
+        priorityqueue::bench_fill_and_drain::<ToTest, _, _>(utils::ordered_sequence::<uint>(4), bencher);
     }
 
     #[bench]
     fn fill_and_drain_unord_small (bencher: &mut Bencher) {
-        super::bench_fill_and_drain::<ToTest, _, _>(unordered_sequence::<uint>(2), bencher);
+        priorityqueue::bench_fill_and_drain::<ToTest, _, _>(utils::unordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn fill_and_drain_unord_big (bencher: &mut Bencher) {
-        super::bench_fill_and_drain::<ToTest, _, _>(unordered_sequence::<uint>(4), bencher);
+        priorityqueue::bench_fill_and_drain::<ToTest, _, _>(utils::unordered_sequence::<uint>(4), bencher);
     }
 
 
 
     #[bench]
     fn mixed_access_ord_small (bencher: &mut Bencher) {
-        super::bench_mixed_access::<ToTest, _, _>(ordered_sequence::<uint>(2), bencher);
+        priorityqueue::bench_mixed_access::<ToTest, _, _>(utils::ordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn mixed_access_ord_big (bencher: &mut Bencher) {
-        super::bench_mixed_access::<ToTest, _, _>(ordered_sequence::<uint>(4), bencher);
+        priorityqueue::bench_mixed_access::<ToTest, _, _>(utils::ordered_sequence::<uint>(4), bencher);
     }
 
     #[bench]
     fn mixed_access_unord_small (bencher: &mut Bencher) {
-        super::bench_mixed_access::<ToTest, _, _>(unordered_sequence::<uint>(2), bencher);
+        priorityqueue::bench_mixed_access::<ToTest, _, _>(utils::unordered_sequence::<uint>(2), bencher);
     }
 
     #[bench]
     fn mixed_access_unord_big (bencher: &mut Bencher) {
-        super::bench_mixed_access::<ToTest, _, _>(unordered_sequence::<uint>(4), bencher);
+        priorityqueue::bench_mixed_access::<ToTest, _, _>(utils::unordered_sequence::<uint>(4), bencher);
     }
 
     );
@@ -209,8 +209,9 @@ macro_rules! bench_priorityqueue(
 
 #[cfg(test)]
 mod bench {
+    use super::super::priorityqueue;
     use super::super::collection;
-    use super::super::utils::{ordered_sequence, unordered_sequence};
+    use super::super::utils;
     use test::Bencher;
 
     use std::collections::PriorityQueue;
