@@ -19,11 +19,14 @@ impl Countable for uint {
     fn biject (number: uint) -> uint { number }
 }
 
-impl Countable for (uint, uint) {
-    fn biject (number: uint) -> (uint, uint) { (number, number) }
+impl <T:Countable> Countable for (T, T) {
+    fn biject (number: uint) -> (T, T) { (Countable::biject(number), Countable::biject(number)) }
 }
 
+#[deriving(Clone)]
 enum Order { Ordered, Unordered }
+
+#[deriving(Clone)]
 pub struct Sequence <C> {
     order: Order,
     range: Range<uint>,

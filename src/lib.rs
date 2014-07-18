@@ -1,6 +1,8 @@
 #![feature(macro_rules)]
-#[macro_escape]
 
+extern crate test;
+
+#[macro_escape]
 pub mod utils;
 pub mod collection;
 pub mod map;

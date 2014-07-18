@@ -1,7 +1,10 @@
 use std::default::Default;
 use std::iter::{FromIterator, Extendable};
+use test::{Bencher, black_box};
 
 use super::utils::{Countable, ordered_sequence};
+
+// Testing
 
 pub fn test_empty <C: Collection + Default> () {
     let col:C = Default::default();
@@ -27,6 +30,18 @@ pub fn test_clear <C:Collection + FromIterator<N> + Mutable, N:Countable> () {
     col.clear();
     assert!(col.is_empty());
     assert_eq!(col.len(), 0);
+}
+
+
+
+
+// Benching
+pub fn bench_from_iter<Col: Collection + FromIterator<N>, N:Countable, I:Iterator<N> + Clone> 
+    (seq: I, bencher: &mut Bencher) {
+    bencher.iter(||{
+        let foo:Col = FromIterator::from_iter(seq.clone());
+        black_box(foo.len());
+    });
 }
 
 #[cfg(test)]
